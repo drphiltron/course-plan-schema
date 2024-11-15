@@ -5,6 +5,12 @@
     "version": "1.0.0",
     "description": "A function to create a course plan using backward design principles."
   },
+  "servers": [
+    {
+      "url": "http://localhost",
+      "description": "Local server (placeholder for testing)"
+    }
+  ],
   "paths": {
     "/generate-course-plan": {
       "post": {
