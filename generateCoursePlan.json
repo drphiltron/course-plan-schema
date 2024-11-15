@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Generate Course Plan",
+    "version": "1.0.0",
+    "description": "A function to create a course plan using backward design principles."
+  },
+  "paths": {
+    "/generate-course-plan": {
+      "post": {
+        "summary": "Generate a course plan",
+        "operationId": "generateCoursePlan",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "learning_outcomes": {
+                    "type": "array",
+                    "description": "The desired learning outcomes for the course.",
+                    "items": { "type": "string" }
+                  },
+                  "assessments": {
+                    "type": "array",
+                    "description": "Methods to evaluate the desired outcomes.",
+                    "items": { "type": "string" }
+                  },
+                  "activities": {
+                    "type": "array",
+                    "description": "Learning activities to achieve outcomes.",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["learning_outcomes", "assessments", "activities"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The generated course plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "course_plan": {
+                      "type": "object",
+                      "properties": {
+                        "Learning Outcomes": { "type": "array", "items": { "type": "string" } },
+                        "Assessments": { "type": "array", "items": { "type": "string" } },
+                        "Learning Activities": { "type": "array", "items": { "type": "string" } }
+                      }
+                    },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
